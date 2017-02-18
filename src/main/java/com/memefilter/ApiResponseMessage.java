@@ -1,4 +1,4 @@
-package com.ajross.memefilter;
+package com.memefilter;
 
 import javax.xml.bind.annotation.XmlTransient;
 

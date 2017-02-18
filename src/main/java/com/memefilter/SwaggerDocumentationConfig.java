@@ -1,4 +1,4 @@
-package ;
+package com.memefilter;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +30,7 @@ public class SwaggerDocumentationConfig {
     public Docket customImplementation(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                    .apis(RequestHandlerSelectors.basePackage("com.ajross.memefilter"))
+                    .apis(RequestHandlerSelectors.basePackage("com.memefilter"))
                     .build()
                 
                 .directModelSubstitute(java.time.LocalDate.class, java.sql.Date.class)

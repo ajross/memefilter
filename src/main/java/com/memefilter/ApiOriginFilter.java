@@ -1,4 +1,4 @@
-package com.ajross.memefilter;
+package com.memefilter;
 
 import java.io.IOException;
 

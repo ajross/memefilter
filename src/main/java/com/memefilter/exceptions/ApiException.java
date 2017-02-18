@@ -1,4 +1,4 @@
-package com.ajross.memefilter;
+package com.memefilter.exceptions;
 
 
 public class ApiException extends Exception{

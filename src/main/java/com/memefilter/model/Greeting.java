@@ -1,4 +1,4 @@
-package com.ajross.memefilter.model;
+package com.memefilter.model;
 
 /**
  * Created by aross on 18/02/17.

@@ -56,9 +56,7 @@ paths:
         200:
           description: An array of price estimates by product
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/FilteredQuote'
+            $ref: '#/definitions/FilteredQuote'
         default:
           description: Unexpected error
           schema:
