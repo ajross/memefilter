@@ -6,33 +6,33 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 /**
- * Quote
+ * MemeText
  */
 
-public class Quote {
+public class MemeText {
 
-    private String quote = null;
+    private String memeText = null;
 
-    public Quote quote(String quote) {
-        this.quote = quote;
+    public MemeText memeText(String memeText) {
+        this.memeText = memeText;
         return this;
     }
 
 
     /**
-     * The quote of the meme.
+     * The memeText of the meme.
      *
-     * @return quote
+     * @return memeText
      **/
 
-    @ApiModelProperty(value = "The quote of the meme.")
-    public String getQuote() {
-        return quote;
+    @ApiModelProperty(value = "The memeText of the meme.")
+    public String getMemeText() {
+        return memeText;
     }
 
 
-    public void setQuote(String quote) {
-        this.quote = quote;
+    public void setMemeText(String memeText) {
+        this.memeText = memeText;
     }
 
 
@@ -44,21 +44,21 @@ public class Quote {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Quote quote = (Quote) o;
-        return Objects.equals(this.quote, quote.quote);
+        MemeText memeText = (MemeText) o;
+        return Objects.equals(this.memeText, memeText.memeText);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quote);
+        return Objects.hash(memeText);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Quote {\n");
+        sb.append("class MemeText {\n");
 
-        sb.append("    quote: ").append(toIndentedString(quote)).append("\n");
+        sb.append("    memeText: ").append(toIndentedString(memeText)).append("\n");
         sb.append("}");
         return sb.toString();
     }
