@@ -1,0 +1,91 @@
+swagger: '2.0'
+info:
+  title: MemeFilter API
+  description: "Replace annoying memes with their true meanings."
+  version: "1.0.0"
+host: localhost
+schemes:
+  - http
+  - https
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /filter/image:
+    post:
+      summary: Filters the supplied image for annoying quotes and returns a more realistic quote.
+      description: |
+        The service will attempt to extract the text from the posted image,
+        find a match in the database, and create a new image to return.
+        The returned image will include the 'real' meaning behind the text in the supplied image.
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: image
+          in: formData
+          description: The image with a banal quote that needs filtering.
+          required: true
+          type: file
+      tags:
+        - Filters
+      responses:
+        200:
+          description: A filtered image
+          schema:
+            type: file
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /filter/text:
+    post:
+      summary: "Returns the true meaning behind the supplied meme text."
+      description: |
+        Searches for a match for the supplied quote against the database.
+        Returns the true meaning behind the supplied quote.
+      parameters:
+        - name: quote
+          in: body
+          description: The quote to be filtered.
+          required: true
+          schema:
+            $ref: '#/definitions/Quote'
+      tags:
+        - Filters
+      responses:
+        200:
+          description: An array of price estimates by product
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FilteredQuote'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Quote:
+    type: object
+    properties:
+      quote:
+        type: string
+        description: The quote of the meme.
+  FilteredQuote:
+    type: object
+    properties:
+      input:
+        type: string
+        description: Quote to be filtered.
+      reality:
+        type: string
+        description: Real meaning behind quote.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
