@@ -1,13 +1,12 @@
-package com.memefilter.datasource.impl;
+package com.memefilter.realitysource.impl;
 
-import com.memefilter.datasource.RealitySource;
+import com.memefilter.realitysource.RealitySource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.*;
@@ -17,8 +16,8 @@ import static org.assertj.core.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.memefilter.datasource.impl"})
-public class StaticDataSourceTest {
+@ComponentScan(basePackages = {"com.memefilter.realitysource.impl"})
+public class StaticRealitySourceTest {
 
     @Autowired
     @Qualifier("realitySource")

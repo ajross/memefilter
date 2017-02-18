@@ -1,6 +1,4 @@
-package com.memefilter.datasource;
-
-import org.springframework.stereotype.Component;
+package com.memefilter.realitysource;
 
 /**
  * Created by aross on 18/02/17.
