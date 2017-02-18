@@ -3,7 +3,9 @@ package com.memefilter.controller.impl;
 import com.memefilter.controller.FilterApi;
 import com.memefilter.model.RealMeaning;
 import com.memefilter.model.MemeText;
+import com.memefilter.realitysource.RealitySource;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import java.util.concurrent.CompletableFuture;
 @Controller
 public class FilterApiController implements FilterApi {
 
+    @Autowired
+    private RealitySource realitySource;
+
     @Override
     public CompletableFuture<ResponseEntity<File>> filterImagePost(@ApiParam(value = "file detail") @RequestPart("file") MultipartFile image) {
         return CompletableFuture.completedFuture(new ResponseEntity<File>(HttpStatus.OK));
@@ -25,6 +30,13 @@ public class FilterApiController implements FilterApi {
 
     @Override
     public CompletableFuture<ResponseEntity<RealMeaning>> filterTextPost(@ApiParam(value = "The memeText to be filtered.", required = true) @RequestBody MemeText memeText) {
-        return CompletableFuture.completedFuture(new ResponseEntity<>(new RealMeaning().memeText(memeText.getMemeText()).reality(memeText.getMemeText()), HttpStatus.OK));
+
+        RealMeaning realMeaning = new RealMeaning();
+        realMeaning.setMemeText(memeText.getMemeText());
+
+        realMeaning.setReality(realitySource.getRealMeaning(memeText.getMemeText()));
+
+
+        return CompletableFuture.completedFuture(new ResponseEntity<>(realMeaning, HttpStatus.OK));
     }
 }

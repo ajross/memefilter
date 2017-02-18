@@ -27,13 +27,15 @@ public class StaticRealitySourceTest {
     public void getRealMeaningThrowsOnNullArg() {
         assertThatThrownBy(() -> realitySource.getRealMeaning(null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Input cannot be null");
+                .hasMessage("Meme text must not be null.");
 
     }
 
     @Test
-    public void getRealMeaningReturnsValidOutput() throws Exception {
-        assertThat(realitySource.getRealMeaning("Test")).isEqualTo("TestResponse");
+    public void getRealMeaningReturnsValidOutputIgnoringMemeCasing() throws Exception {
+        assertThat(realitySource.getRealMeaning("Meme")).isEqualTo("Reality");
+        assertThat(realitySource.getRealMeaning("MEME")).isEqualTo("Reality");
+        assertThat(realitySource.getRealMeaning("meme")).isEqualTo("Reality");
     }
 
     @Test
