@@ -44,7 +44,7 @@ public class MemeImageFilterTest {
     @Test
     public void getImageTextReturnsTextForClearImage() {
         final String result = getTextFromImageResource("handle-clear.png");
-        assertThat(result).isEqualTo("If you won't put up with me when I mistreat you, you don't deserve me.");
+        assertThat(result).isEqualToIgnoringCase("If you can't handle me at my worst, you don't deserve me at my best");
     }
 
     private String getTextFromImageResource(final String filename) {
